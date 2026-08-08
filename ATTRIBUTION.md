@@ -1,11 +1,10 @@
 # Attribution & licensing
 
-This repository holds planet, moon and sky textures used by
-[ONI](https://github.com/kafeg/oni). **None of it is original work of the ONI maintainer**,
-so it is *not* covered by the ONI license. Each file keeps the terms of its source.
+Planet, moon and sky textures for [ONI](https://github.com/kafeg/oni). Files were renamed
+when they were brought in, which is why the names here do not match the upstream ones.
 
-Files were renamed when they were brought in, which is why the names here do not match the
-upstream names.
+Two groups, with different terms. **There is no blanket license on this repository** —
+check the group a file belongs to.
 
 ## Solar System Scope — CC BY 4.0
 
@@ -38,26 +37,35 @@ Required credit, reproduced in the ONI in-game credits panel:
 > Planet, moon and sky textures © [Solar System Scope](https://www.solarsystemscope.com/textures/),
 > licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
-## ⚠️ Unverified — most likely JHT's Planetary Pixel Emporium
+## Derived from public-domain mission data — ONI original work
 
-| File | Notes |
-|---|---|
-| `plutomap1k.jpg` | Filename and 1024×512 size match the upstream Pluto map exactly |
-| `uranus_ring.jpg` | 1024×72 — matches the upstream Uranus ring strip |
-| `saturnrings.png` | 1024×64 — matches the upstream Saturn ring strip |
-| `moon_bump_2k.jpg` | Not part of the Solar System Scope set; a lunar bump map of this kind is |
-| `moon_normal_2k.png` | Derived from `moon_bump_2k.jpg` by ONI's `scripts/generate-normal-map.mjs` — inherits whatever terms that file carries |
+Built by scripts in the main repository from NASA/USGS products. NASA and USGS planetary
+data are not subject to copyright. The derived files are original work of the ONI
+maintainer under the [repository license](https://github.com/kafeg/oni/blob/master/LICENSE)
+(PolyForm Noncommercial 1.0.0), and each is reproducible from its script.
 
-These appear to originate from JHT's Planetary Pixel Emporium,
-© James Hastings-Trew (planetpixelemporium.com). **The terms could not be verified** — the
-site did not resolve at the time of writing, so no license text could be retrieved and no
-permission has been obtained.
+| File | Built by | Source data |
+|---|---|---|
+| `plutomap1k.jpg` | `scripts/generate-pluto-texture.mjs` | [Pluto New Horizons Global Mosaic 300m (Jul 2017)](https://astrogeology.usgs.gov/search/map/pluto_newhorizons_global_mosaic_300m_jul2017) — USGS Astrogeology / NASA / JHUAPL / SwRI |
+| `moon_bump_2k.jpg` | inline conversion, see below | [LRO LOLA gridded DEM, 16 pixels/degree](https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/) — NASA/GSFC LOLA team |
+| `moon_normal_2k.png` | `scripts/generate-normal-map.mjs` | derived from `moon_bump_2k.jpg` |
 
-**Status: blocked for commercial use.** Before ONI ships commercially these files must
-either be cleared with the author or replaced. Public-domain replacements exist for all of
-them — NASA/JHUAPL/SwRI New Horizons global maps for Pluto, NASA/USGS LRO data for the
-lunar bump map, and the ring strips are simple 1D gradients that can be regenerated from
-published ring photometry.
+The lunar height map is the LOLA `ldem_16.img` raster (5760×2880, 16-bit signed, height =
+DN × 0.5 m) rolled half a width — LOLA is centred on 180° longitude, every other map here
+is centred on 0° — then normalised and downsampled to 2048×1024. Verified by correlating
+the elevation against the `moon_8k.jpg` albedo: the maria are both dark and low, and the
+correlation is +0.64 with the roll versus −0.42 without.
+
+## Generated from published geometry — ONI original work
+
+No source imagery at all: these are one-dimensional strips (colour and opacity against
+orbital radius) computed from ring radii and optical depths in the literature. Original
+work under the repository license.
+
+| File | Built by | Structure |
+|---|---|---|
+| `saturnrings.png` | `scripts/generate-ring-textures.mjs` | C, B and A rings, the Cassini Division, and the Colombo/Maxwell/Huygens/Encke/Keeler gaps |
+| `uranus_ring.png` | `scripts/generate-ring-textures.mjs` | rings 6, 5, 4, α, β, η, γ, δ, λ, ε plus the faint ζ sheet |
 
 ## Adding a texture here
 

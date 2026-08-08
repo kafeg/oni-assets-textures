@@ -8,8 +8,15 @@ in the main repository) — the sources here are the originals.
 
 ## Licensing
 
-**Third-party material. There is no blanket license on this repository.** Every file keeps
-the terms of its own source; see [ATTRIBUTION.md](ATTRIBUTION.md) for a per-file record.
+**There is no blanket license on this repository** — see [ATTRIBUTION.md](ATTRIBUTION.md)
+for the per-file record. In short:
 
-Most of the set is Solar System Scope under CC BY 4.0. A handful of files have unverified
-provenance and are flagged there as blocked for commercial use.
+- the planet, moon and sky maps are **Solar System Scope, CC BY 4.0** (commercial use
+  allowed, attribution required — it is in the game's credits panel);
+- the Pluto map and the lunar height/normal maps are **derived from public-domain NASA/USGS
+  mission data** by scripts in the main repository;
+- the Saturn and Uranus ring strips are **generated from published ring geometry**, with no
+  source imagery at all.
+
+The last two groups are original work under the main repository's license. Everything here
+is cleared for commercial use.
